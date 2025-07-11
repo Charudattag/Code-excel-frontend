@@ -1,0 +1,116 @@
+.instructor-main-container {
+  background: #f3f4f6;
+  min-height: 80vh;
+  padding: 0 0 60px 0;
+}
+
+.instructor-title-container {
+  margin-top: 30px;
+  margin-bottom: 32px;
+}
+
+.instructor-title {
+  font-family: "Georgia", serif;
+  font-weight: 700;
+  color: #1a2233;
+  font-size: 2.8rem;
+}
+
+.instructor-content-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 64px;
+  max-width: 1100px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.instructor-image-wrapper {
+  flex: 1 1 340px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.instructor-image {
+  width: 340px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  margin-top: 47px;
+}
+
+.instructor-info-wrapper {
+  flex: 1 1 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 18px;
+}
+
+.instructor-name {
+  font-family: "Georgia", serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #122266;
+  margin-bottom: 0.2em;
+}
+
+.instructor-subtitle {
+  color: #2196f3;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.2em;
+  font-family: "Roboto", arial, sans-serif;
+}
+
+.instructor-description {
+  color: #555;
+  font-size: 1.13rem;
+  margin-bottom: 1.2em;
+  font-family: "Roboto", arial, sans-serif;
+  font-weight: 400;
+}
+
+.instructor-description p {
+  margin-bottom: 0.8em;
+}
+
+.instructor-instagram-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #2196f3;
+  background: #fff;
+  color: #222;
+  font-weight: 600;
+  font-size: 1.08rem;
+  border-radius: 5px;
+  padding: 3px 18px;
+  text-decoration: none;
+  transition: background 0.18s, color 0.18s, border 0.18s;
+}
+
+.instructor-instagram-btn:hover {
+  background: #2196f3;
+  color: #fff;
+  border: 2px solid #2196f3;
+}
+
+.insta-icon {
+  display: flex;
+  align-items: center;
+  font-size: 1.3rem;
+}
+
+.instagram-logo-img {
+  width: 33px;
+  height: 33px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+}

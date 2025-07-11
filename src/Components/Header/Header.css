@@ -1,0 +1,242 @@
+header.header {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.header-search-form {
+  margin: 0 10px 0 0;
+  max-width: 300px;
+}
+
+.search-input-wrapper {
+  position: relative;
+  width: 100%;
+  
+}
+
+.search-input-wrapper input {
+  padding-right: 5.2rem;
+  border: 1px solid #2196f3;
+  /* Make space for the icon */
+}
+
+.search-icon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #2196f3;
+  font-size: 20px;
+  pointer-events: none;
+}
+
+.header-action-btns {
+  gap: 0;
+}
+
+.header-action-btns .btn-outline-primary {
+  margin-right: 10px;
+}
+
+.navbar-nav .nav-link {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+.navbar-nav .nav-link:last-child {
+  margin-right: 0;
+}
+
+.header-btn {
+  transition: background 0.2s, color 0.2s;
+}
+.header-btn:hover, .header-btn:focus {
+  background: #2196f3 !important;
+  color: #fff !important;
+  border-color: #2196f3 !important;
+}
+
+/* Mobile Toggle Button - Hidden on desktop */
+.mobile-toggle-btn {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-right: 15px;
+  z-index: 1001;
+}
+
+.toggle-line {
+  width: 25px;
+  height: 3px;
+  background-color: #2196f3;
+  margin: 3px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+/* Mobile Menu - Hidden by default */
+.mobile-menu {
+  display: none;
+}
+
+/* Mobile Search Header - Hidden by default */
+.mobile-search-header {
+  display: none;
+}
+
+/* Desktop Menu - Visible by default */
+.desktop-menu {
+  display: block;
+}
+
+.desktop-search {
+  display: flex;
+}
+
+.desktop-buttons {
+  display: flex;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .mobile-toggle-btn {
+    display: flex;
+  }
+
+  /* Show mobile search header */
+  .mobile-search-header {
+    display: block;
+  }
+
+  /* Hide CODE EXCEL Live text in mobile */
+  .navbar-brand span {
+    display: none !important;
+  }
+
+  /* Show only logo in mobile */
+  .navbar-brand {
+    flex: 0 0 auto;
+    margin-right: 0;
+  }
+
+  .navbar-brand img {
+    margin-left: 15px !important;
+  }
+
+  /* Center search input in mobile header */
+  .mobile-search-header {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 250px;
+  }
+
+  .mobile-search-header .header-search-form {
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .mobile-search-header .search-input-wrapper input {
+    font-size: 14px;
+    padding: 8px 40px 8px 15px;
+  }
+
+  .mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+    display: block;
+  }
+
+  .mobile-menu.mobile-menu-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    max-height: 600px;
+    overflow: visible;
+  }
+
+  .mobile-menu .navbar-nav {
+    flex-direction: column !important;
+    gap: 15px !important;
+    margin-bottom: 20px;
+  }
+
+  .mobile-menu .navbar-nav .nav-item {
+    width: 100%;
+  }
+
+  .mobile-menu .navbar-nav .nav-link {
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 16px;
+    display: block;
+    text-decoration: none;
+  }
+
+  .mobile-menu .header-action-btns {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    display: flex !important;
+  }
+
+  .mobile-menu .header-action-btns .btn {
+    width: 100%;
+    margin: 0 !important;
+    text-align: center;
+  }
+
+  .container-fluid {
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+  }
+
+  /* Hide desktop elements on mobile */
+  .desktop-menu,
+  .desktop-search,
+  .desktop-buttons {
+    display: none !important;
+  }
+}
+
+/* Tablet styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .mobile-toggle-btn {
+    display: none;
+  }
+  
+  .mobile-menu,
+  .mobile-search-header {
+    display: none !important;
+  }
+
+  .desktop-menu,
+  .desktop-search,
+  .desktop-buttons {
+    display: flex !important;
+  }
+}
+
