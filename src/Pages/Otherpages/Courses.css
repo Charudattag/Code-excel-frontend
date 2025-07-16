@@ -20,6 +20,15 @@
   max-width: 1100px;
 }
 
+.courses-grid > div {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.courses-grid > div:hover {
+  transform: scale(1.02);
+}
+
 .courses-see-more-btn-container {
   display: flex;
   justify-content: center;
