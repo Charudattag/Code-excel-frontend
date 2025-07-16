@@ -1,5 +1,7 @@
 import React from "react";
 import "./Upcomingcourses.css";
+import coureseImage1 from "../../assets/Courses/imag2.jpg";
+import coureseImage2 from "../../assets/Courses/Image1.jpg";
 
 const UpcomingCourses = () => {
   const upcomingCourses = [
@@ -8,14 +10,14 @@ const UpcomingCourses = () => {
       title: "Web Development (Frontend + Backend)",
       instructor: "Samarth Kulkarni",
       date: "August 28, 2025",
-      image: "/src/assets/Courses/imag2.jpg", // Using existing course image
+      image: coureseImage1, // Using existing course image
     },
     {
       id: 2,
       title: "Android App Development (Java/Kotlin)",
       instructor: "Samarth Kulkarni",
       date: "September 15, 2025",
-      image: "/src/assets/Courses/Image1.jpg", // Using existing course image
+      image: coureseImage2, // Using existing course image
     },
   ];
 
