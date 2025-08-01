@@ -2,9 +2,12 @@ import axios from "axios";
 
 // Base URL for the API
 
-export const BASE_URL = "http://localhost:8000/api";
+// export const BASE_URL = "http://localhost:8000/api";
 
-export const IMG_URL = "http://localhost:8000";
+// export const IMG_URL = "http://localhost:8000";
+
+export const BASE_URL = "https://code-excel-backend.onrender.com/api";
+export const IMG_URL = "https://code-excel-backend.onrender.com";
 
 // Create an axios instance
 const api = axios.create({
