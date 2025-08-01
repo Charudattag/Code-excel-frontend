@@ -1,6 +1,6 @@
 import React from "react";
 import "./Footer.css";
-import Logo from "../../assets/logo/Logo.png";
+import Logo from "../../assets/logo/newlogo.png";
 
 const Footer = () => {
   return (
@@ -9,14 +9,11 @@ const Footer = () => {
         <div className="footer-col footer-brand">
           <div className="footer-logo-row">
             <img src={Logo} alt="Code Excel Logo" className="footer-logo-img" />
-            <span className="footer-logo-text">
-              CODE EXCEL <span className="footer-live">Live</span>
-            </span>
           </div>
+          <span className="footer-logo-text">CodeExcel Live</span>
           <div className="footer-tagline">
-            Master the Code.
-            <br />
-            Rule the Future.
+            Master Coding Skills Smartly
+            <br /> Rule The Future!
           </div>
         </div>
         <div className="footer-col">
@@ -32,15 +29,26 @@ const Footer = () => {
               <a href="/privacy">Privacy Policy</a>
             </li>
           </ul>
+          <div className="footer-section mt-5">
+            <div className="footer-col-title">Join Us</div>
+            <ul className="footer-list">
+              <li>
+                <a href="/">Login</a>
+              </li>
+              <li>
+                <a href="/">Register Now</a>
+              </li>
+            </ul>
+          </div>
         </div>
         <div className="footer-col">
-          <div className="footer-col-title">Resource</div>
+          <div className="footer-col-title">Explore</div>
           <ul className="footer-list">
             <li>
-              <a href="/about">About</a>
+              <a href="/about">Courses</a>
             </li>
             <li>
-              <a href="/courses">Courses</a>
+              <a href="/courses">Reviews</a>
             </li>
             <li>
               <a href="/faqs">FAQs</a>
@@ -48,17 +56,27 @@ const Footer = () => {
           </ul>
         </div>
         <div className="footer-col">
-          <div className="footer-col-title">Contacts</div>
+          <div className="footer-col-title">Connect</div>
           <ul className="footer-list">
-            <li>Pune, MH, IND</li>
-            <li>Ping Me</li>
-            <li>+91 9175596004</li>
+            <li>
+              WhatsApp
+              <li>+91 9175596004</li>
+            </li>
+            <li>
+              Email
+              <li>
+                codeexcellive@gmail.com
+                <li>support.codeexcel@gmail.com</li>
+              </li>
+            </li>
           </ul>
         </div>
       </div>
+
       <hr className="footer-divider" />
       <div className="footer-copyright">
-        Copyright © 2025 | Powered by CODE EXCEL
+        Copyright © {new Date().getFullYear()} CodeExcel Live. All rights
+        reserved. Terms and Conditions
       </div>
     </footer>
   );

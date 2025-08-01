@@ -1,24 +1,37 @@
 .testimonials-main-container {
-  background: #f3f4f6;
-  min-height: 100vh;
-  padding-bottom: 60px;
+  background-image: url('../../assets/Backgroundimages/Frame 209.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 80vh;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 
 .testimonials-title-container {
-  margin-top: 48px;
+  margin-top: 10px;
   margin-bottom: 32px;
 }
 
 .testimonials-title {
   font-family: 'Georgia', serif;
   font-weight: 700;
-  color: #1a2233;
+  color: white;
   font-size: 2.8rem;
+  
 }
 
 .testimonials-subtitle {
   font-size: 1.15rem;
-  color: #555;
+  color: white;
   margin-top: 18px;
 }
 
@@ -30,6 +43,7 @@
   margin: 48px auto 0 auto;
   max-width: 1200px;
   flex-wrap: wrap;
+  
 }
 
 .testimonial-card-outer {

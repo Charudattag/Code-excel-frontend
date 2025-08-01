@@ -1,5 +1,5 @@
-import React from "react";
-import { useLocation, useParams } from "react-router-dom";
+import React, { useEffect, useState, useRef } from "react";
+import { useParams } from "react-router-dom";
 import joinNowImage from "../../assets/Courses/joinNow.jpg";
 import instructorImage from "../../assets/Instructor/InstructorImage.jpg";
 import Header from "../../Components/Header/Header";
@@ -8,82 +8,62 @@ import WhatSetsUsApart from "../../Components/WhatSetsUsApart/WhatSetsUsApart";
 import Testimonials from "../Testimonials/Testimonials";
 import UpcomingCourses from "../UpcomingCourses/UpcomingCourses";
 import Footer from "../../Components/Footer/Footer";
+import { getCourseBySlugAPI, IMG_URL } from "../../API/Api";
 
 const CourseDetails = () => {
-  const location = useLocation();
-  const { id } = useParams();
-  const courseData = location.state?.courseData;
+  const { slug } = useParams();
+  const [course, setCourse] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const didFetch = useRef(false);
 
-  // Default course data if none is passed
-  const defaultCourse = {
-    title: "Python for Everybody Specialization",
-    description:
-      "Learn to Program and Analyze Data with Python. Develop programs to gather, clean, analyze, and visualize data.",
-    instructor: "Samarth Kulkarni",
-    instructorImage: instructorImage,
-    rating: 5.0,
+  useEffect(() => {
+    if (didFetch.current) return;
+    didFetch.current = true;
 
-    ratingCount: 1024,
-    lessons: 25,
-    duration: "6h 45m",
-    enrolledCount: "1,808,329",
-    aboutCourse:
-      "Java Masters is a beginner-friendly course designed to build a strong foundation in Java programming. From core concepts to real-world applications, learners will gain hands-on experience with OOP, data structures, and backend logic. The course includes interactive modules and mini-projects to ensure practical understanding. Guided by expert mentor Samarth Kulkarni, this program is ideal for students and aspiring developers aiming for Java-based roles.",
-    skills: [
-      "Database Design",
-      "Database Systems",
-      "Data Processing",
-      "Data Structures",
-      "Programming Principles",
-      "SQL",
-      "Restful API",
-      "Relational Databases",
-      "Data Visualization",
-      "Web Scraping",
-      "Database Management",
-    ],
-    learningModules: [
-      {
-        title: "Introduction to Java",
-        description: "syntax, data types, operators, control statements",
-      },
-      {
-        title: "Object-Oriented Programming (OOP)",
-        description:
-          "classes, objects, inheritance, polymorphism, encapsulation",
-      },
-      {
-        title: "Exception Handling",
-        description: "try-catch blocks, custom exceptions",
-      },
-      {
-        title: "Collections Framework",
-        description: "List, Set, Map, and their real-world usage",
-      },
-      {
-        title: "File Handling",
-        description: "reading/writing files using Java I/O",
-      },
-      {
-        title: "Multithreading & Concurrency",
-        description: "thread creation, synchronization",
-      },
-      {
-        title: "Database Connectivity (JDBC)",
-        description: "CRUD operations with MySQL",
-      },
-      {
-        title: "GUI with JavaFX",
-        description: "building basic desktop interfaces",
-      },
-      {
-        title: "Mini Projects",
-        description: "Console apps, small GUI tools, DB-connected systems",
-      },
-    ],
-  };
+    const fetchCourse = async () => {
+      try {
+        setLoading(true);
+        const response = await getCourseBySlugAPI(slug);
+        if (response.success) {
+          setCourse(response.data);
+        } else {
+          setError("Course not found");
+        }
+      } catch (err) {
+        setError("Failed to load course");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchCourse();
+  }, [slug]);
 
-  const course = courseData || defaultCourse;
+  if (loading) {
+    return (
+      <div className="course-details-container">
+        <Header />
+        <div className="course-details-content mt-5">
+          <h2>Loading...</h2>
+        </div>
+      </div>
+    );
+  }
+  if (error || !course) {
+    return (
+      <div className="course-details-container">
+        <Header />
+        <div className="course-details-content mt-5">
+          <h2>{error || "Course not found"}</h2>
+        </div>
+      </div>
+    );
+  }
+
+  // Get image from media array or fallback
+  const courseImage = course.banner
+    ? `${IMG_URL}/uploads/${course.banner}`
+    : joinNowImage;
 
   return (
     <div className="course-details-container">
@@ -91,7 +71,7 @@ const CourseDetails = () => {
       <div className="course-details-content mt-5">
         <div className="course-details-left">
           <div className="course-title-section">
-            <h1 className="course_title">{course.title}</h1>
+            <h1 className="course_title">{course.name}</h1>
             <p className="course-description">{course.description}</p>
           </div>
 
@@ -99,13 +79,13 @@ const CourseDetails = () => {
             <div className="instructor-info">
               <div className="instructor-avatar">
                 <img
-                  src={course.instructorImage || instructorImage}
+                  src={instructorImage}
                   alt="Instructor"
                   className="instructorimage"
                 />
               </div>
               <div className="instructor-details">
-                <h3 className="instructor_name">{course.instructor}</h3>
+                <h3 className="instructor_name">Samarth Kulkarni</h3>
                 <span className="instructor-label">Instructor</span>
               </div>
             </div>
@@ -115,18 +95,20 @@ const CourseDetails = () => {
             <div className="stats-row">
               <div className="rating-stats">
                 <div className="stars">★★★★★</div>
-                <span className="rating-value">{course.rating.toFixed(1)}</span>
-                <span className="rating-count">
-                  ({course.ratingCount} rating)
-                </span>
+                <span className="rating-value">5.0</span>
+                <span className="rating-count">(100 ratings)</span>
               </div>
               <div className="lessons-stats">
                 <i className="bi bi-journal-text stats-icon"></i>
-                <span className="stats-text">{course.lessons} Lessons</span>
+                <span className="stats-text">
+                  {course.sections?.length || 0} Lessons
+                </span>
               </div>
               <div className="duration-stats">
                 <i className="bi bi-clock stats-icon"></i>
-                <span className="stats-text">{course.duration}</span>
+                <span className="stats-text">
+                  {course.duration || "8h 30m"}
+                </span>
               </div>
             </div>
           </div>
@@ -135,7 +117,7 @@ const CourseDetails = () => {
         <div className="course-details-right">
           <div className="course-image-container">
             <img
-              src={joinNowImage}
+              src={courseImage}
               alt="Course Preview"
               className="course-preview-image"
             />
@@ -151,7 +133,7 @@ const CourseDetails = () => {
                 About This Course
               </h2>
               <p className="about-course-description mt-2">
-                {course.aboutCourse}
+                {course.description}
               </p>
             </div>
           </div>
@@ -160,8 +142,8 @@ const CourseDetails = () => {
             <div className="section-container">
               <h2 className="skills-title">Skills you'll gain</h2>
               <div className="skills-container">
-                {course.skills &&
-                  course.skills.map((skill, index) => (
+                {course.prerequisites &&
+                  course.prerequisites.map((skill, index) => (
                     <span key={index} className="skill-tag">
                       {skill}
                     </span>
@@ -178,36 +160,57 @@ const CourseDetails = () => {
                 What You'll Learn
               </h2>
               <div className="learning-modules-list">
-                <div className="learning-modules-left">
-                  {course.learningModules &&
-                    course.learningModules.slice(0, 5).map((module, index) => (
-                      <div key={index} className="learning-module-item">
-                        <div className="module-arrow"></div>
-                        <div className="module-content">
-                          <span className="module-title">{module.title}</span>
-                          <span className="module-description">
-                            {" "}
-                            – {module.description}
-                          </span>
+                {course.outcomes && course.outcomes.length > 0 ? (
+                  // Split outcomes into two columns
+                  Array.from({
+                    length: Math.ceil(course.outcomes.length / 2),
+                  }).map((_, rowIdx) => (
+                    <React.Fragment key={rowIdx}>
+                      {/* Left column (odd index) */}
+                      {course.outcomes[rowIdx * 2] && (
+                        <div className="learning-module-item">
+                          <div className="module-arrow"></div>
+                          <div className="module-content">
+                            {(() => {
+                              const outcome = course.outcomes[rowIdx * 2];
+                              const [boldPart, ...rest] = outcome.split("-");
+                              return (
+                                <span className="module-title">
+                                  <b>{boldPart.trim()}</b>
+                                  {rest.length > 0 && (
+                                    <span> - {rest.join("-").trim()}</span>
+                                  )}
+                                </span>
+                              );
+                            })()}
+                          </div>
                         </div>
-                      </div>
-                    ))}
-                </div>
-                <div className="learning-modules-right">
-                  {course.learningModules &&
-                    course.learningModules.slice(5, 9).map((module, index) => (
-                      <div key={index + 5} className="learning-module-item">
-                        <div className="module-arrow"></div>
-                        <div className="module-content">
-                          <span className="module-title">{module.title}</span>
-                          <span className="module-description">
-                            {" "}
-                            – {module.description}
-                          </span>
+                      )}
+                      {/* Right column (even index) */}
+                      {course.outcomes[rowIdx * 2 + 1] && (
+                        <div className="learning-module-item">
+                          <div className="module-arrow"></div>
+                          <div className="module-content">
+                            {(() => {
+                              const outcome = course.outcomes[rowIdx * 2 + 1];
+                              const [boldPart, ...rest] = outcome.split("-");
+                              return (
+                                <span className="module-title">
+                                  <b>{boldPart.trim()}</b>
+                                  {rest.length > 0 && (
+                                    <span> - {rest.join("-").trim()}</span>
+                                  )}
+                                </span>
+                              );
+                            })()}
+                          </div>
                         </div>
-                      </div>
-                    ))}
-                </div>
+                      )}
+                    </React.Fragment>
+                  ))
+                ) : (
+                  <div>No outcomes listed.</div>
+                )}
               </div>
             </div>
           </div>

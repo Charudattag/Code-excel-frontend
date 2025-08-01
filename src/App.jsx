@@ -17,7 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Dashboard />} />
-            <Route path="/course-details/:id" element={<CourseDetails />} />
+            <Route path="/course-details/:slug" element={<CourseDetails />} />
           </Route>
         </Routes>
         <ToastContainer />

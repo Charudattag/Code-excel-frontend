@@ -4,6 +4,7 @@ import TestimonialCard from "../../Components/TestimonialCard/Testimonialcard";
 import Testimonial1 from "../../assets/Testimonial/testi1.jpg";
 import Testimonial2 from "../../assets/Testimonial/testi2.jpg";
 import Testimonial3 from "../../assets/Testimonial/testi3.jpg";
+import Background from "../../assets/Backgroundimages/Frame 246.png";
 
 const testimonials = [
   {
@@ -37,13 +38,14 @@ const Testimonials = () => {
 
   return (
     <div className="testimonials-main-container">
-      <div className="testimonials-title-container text-center fw-bold">
-        <h1 className="testimonials-title">What our Students say</h1>
-        <p className="testimonials-subtitle text-muted">
-          What Our Learners Say
-          <br /> Real stories. Real success. Directly from those who've
-          experienced <br /> Code Excel.
-        </p>
+      <div className="testimonials-title-container-outer ">
+        <div className="testimonials-title-container text-center fw-bold">
+          <h1 className="testimonials-title">Hear From Our Students</h1>
+          <p className="testimonials-subtitle ">
+            Real stories !
+            <br /> Directly from those who’ve experienced Code Excel. <br />{" "}
+          </p>
+        </div>
       </div>
       <div className="testimonials-cards-row ">
         {testimonials.map((t, i) => (

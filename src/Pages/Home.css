@@ -6,16 +6,17 @@
 }
 
 .left-content {
-  padding-left: 10vw;
+  padding-left: 6vw;
   padding-right: 2vw;
 }
 
 .home-title {
-  font-size: 3.2rem;
-  font-weight: 700;
+  font-size: 80px;
+  font-weight: bold;
   line-height: 1.3;
   margin-bottom: 1.2rem;
   color: #183153;
+  font-family: 'Noto Sans',;
 }
 
 .highlight {
@@ -27,8 +28,21 @@
 
 .home-subtitle {
   color: #6b7280;
-  font-size: 1.1rem;
+  font-size: 21px;
+ 
+  font-family: 'Noto Sans',;
+  padding-left: 90px;
+}
+.home-subtitle-subtext{
+  color: #6b7280;
+  font-size: 21px;
   margin-bottom: 2rem;
+  font-family: 'Poppins',;
+
+
+}
+.home-btn-group{
+  padding-left: 90px;
 }
 
 .home-btn-group .home-btn {
@@ -37,6 +51,7 @@
   border-radius: 8px;
   padding: 0.7rem 1.6rem;
   margin-right: 10px;
+  
 }
 
 .home-btn-group .btn-outline-primary {
@@ -123,7 +138,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  width: 8%;
+  width: 7%;
   height: 100%;
   z-index: 2;
   pointer-events: none;

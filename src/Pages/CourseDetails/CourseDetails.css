@@ -419,8 +419,9 @@
 }
 
 .learning-modules-list {
-  display: flex;
-  gap: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 60px;
   justify-content: space-between;
   padding: 0 40px;
 }
@@ -478,8 +479,7 @@
   font-weight: 600;
   color: #2c3e50;
   font-size: 1rem;
-  white-space: nowrap;
-  overflow: hidden;
+ 
   text-overflow: clip;
 }
 
@@ -620,6 +620,14 @@
   .module-title,
   .module-description {
     font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .learning-modules-list {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 0 20px;
   }
 }
 

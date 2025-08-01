@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import HomeImage from "../assets/logo/Home.jpg";
+import HomeImage from "../assets/Home/Home.png";
 import "./Home.css";
 
 const CountUp = ({ end, duration = 1200 }) => {
@@ -37,10 +37,9 @@ const Home = () => {
                 with Code Excel
               </span>
             </h1>
-            <p className="home-subtitle">
-              From fundamentals to finesse.
-              <br />
-              With Samarth Kulkarni's expert guidance.
+            <p className="home-subtitle">We Just Don’t Teach, We Transform !</p>
+            <p className="home-subtitle-subtext">
+              Want The Best Programming Experience? Join Us Now !
             </p>
             <div className="home-btn-group ">
               <a href="/courses" className="btn btn-primary home-btn">
@@ -59,9 +58,9 @@ const Home = () => {
                   <CountUp end={1000} />
                 </div>
                 <div className="stat-label">
-                  Courses to
+                  Upcoming
                   <br />
-                  choose from
+                  courses
                 </div>
               </div>
               <div className="stat-item d-flex flex-column align-items-center">
@@ -79,9 +78,9 @@ const Home = () => {
                   <CountUp end={200} />
                 </div>
                 <div className="stat-label">
-                  Professional
+                  Mock
                   <br />
-                  trainers
+                  Interviews
                 </div>
               </div>
             </div>
